@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: ["./entrypoint.sh"]
+    volumes:
+      - .:/app
+      - ./static:/app/static
+
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: db.sqlite3
+      POSTGRES_USER: ruthwikraja
+      POSTGRES_PASSWORD: 2352786
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
