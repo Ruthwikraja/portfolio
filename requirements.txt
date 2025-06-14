@@ -6,6 +6,6 @@ gunicorn==21.2.0
 idna==3.6
 packaging==23.2
 Pillow==10.1.0
-requests==2.31.0
+requests==2.32.4
 sqlparse==0.4.4
 urllib3==2.1.0
